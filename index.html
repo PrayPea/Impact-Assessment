@@ -12,29 +12,23 @@
       return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-    // Retrieve key1 and key2 values from the URL
-    var key1 = getParameterByName('key1');
-    var key2 = getParameterByName('key2');
-
-    // Display key1 and key2 values on the webpage
-    document.addEventListener("DOMContentLoaded", function() {
+    // Retrieve customerid and customeremail values from the external URL
+    var url = 'https://utt.impactcdn.com/A2061713-8c6d-4b06-b4c9-fcc4bf22bce365535.js';
+    var script = document.createElement('script');
+    script.src = url;
+    script.onload = function() {
+      var customerid = window.ire_o.getCustomerId();
+      var customeremail = window.ire_o.getCustomerEmail();
+      
+      // Pass customerid and customeremail values to key1 and key2
+      var key1 = customerid;
+      var key2 = customeremail;
+      
+      // Display key1 and key2 values on the webpage
       document.getElementById('key1Value').textContent = key1 || '';
       document.getElementById('key2Value').textContent = key2 || '';
-    });
-  </script>
-  <script>
-    (function(a,b,c,d,e,f,g){
-      e['ire_o'] = c;
-      e[c] = e[c] || function(){(e[c].a=e[c].a||[]).push(arguments)};
-      f = d.createElement(b);
-      g = d.getElementsByTagName(b)[0];
-      f.async = 1;
-      f.src = a;
-      g.parentNode.insertBefore(f,g);
-    })('https://utt.impactcdn.com/A2061713-8c6d-4b06-b4c9-fcc4bf22bce365535.js','script','ire',document,window);
-
-    // Pass the key1 and key2 values to the ire 'identify' function
-    ire('identify', {customerid: key1, customeremail: key2});
+    };
+    document.head.appendChild(script);
   </script>
   <script>
     (function(w, d, s, l, i) {

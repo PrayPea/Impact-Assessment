@@ -1,22 +1,56 @@
 <html>
-	<head>
-		<script>
-			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-WBZZT9H');
-		</script>
-		<title>Impact Assessment</title>
-	</head>
-	<body>
-		<noscript>
-			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBZZT9H"
-			height="0" width="0" style="display:none;visibility:hidden"></iframe>
-		</noscript>
-		<header>
-			<p>Key 1: <span id="key1"></span></p >
-			<p>Key 2: <span id="key2"></span></p >
-		</header>		
-	</body>
+<head>
+  <script>
+    // Function to extract the value of a query parameter from the URL
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Extract key1 and key2 values from the URL
+    var key1 = getParameterByName('key1');
+    var key2 = getParameterByName('key2');
+
+    // Display key1 and key2 values on the webpage
+    var key1Element = document.getElementById('key1');
+    var key2Element = document.getElementById('key2');
+
+    key1Element.textContent = key1;
+    key2Element.textContent = key2;
+
+    // Pass the key1 and key2 values to the identify function
+    ire('identify', {customerid: key1, customeremail: key2});
+  </script>
+  <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WBZZT9H');
+  </script>
+  <title>Impact Assessment</title>
+</head>
+<body>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBZZT9H"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <header>
+    <p>Key 1: <span id="key1"></span></p>
+    <p>Key 2: <span id="key2"></span></p>
+  </header>
+</body>
 </html>

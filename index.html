@@ -17,14 +17,13 @@
     var key2 = getParameterByName('key2');
 
     // Display key1 and key2 values on the webpage
-    var key1Element = document.getElementById('key1');
-    var key2Element = document.getElementById('key2');
+    document.addEventListener("DOMContentLoaded", function() {
+      var key1Element = document.getElementById('key1Value');
+      var key2Element = document.getElementById('key2Value');
 
-    key1Element.textContent = key1;
-    key2Element.textContent = key2;
-
-    // Pass the key1 and key2 values to the identify function
-    ire('identify', {customerid: key1, customeremail: key2});
+      key1Element.textContent = key1;
+      key2Element.textContent = key2;
+    });
   </script>
   <script>
     (function(a,b,c,d,e,f,g){
@@ -60,9 +59,8 @@
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <header>
-    <p>Key 1: <span id="key1"></span></p>
-    <p>Key 2: <span id="key2"></span></p>
+    <p>Key 1: <span id="key1Value"></span></p>
+    <p>Key 2: <span id="key2Value"></span></p>
   </header>
 </body>
 </html>
-

@@ -21,13 +21,11 @@
       var key1Element = document.getElementById('key1Value');
       var key2Element = document.getElementById('key2Value');
 
-      key1Element.textContent = key1;
-      key2Element.textContent = key2;
-
-      // Pass the key1 and key2 values to the identify function
-      ire('identify', {customerid: key1, customeremail: key2});
+      key1Element.textContent = key1 || 'N/A';
+      key2Element.textContent = key2 || 'N/A';
     });
   </script>
+  <script src="https://utt.impactcdn.com/A2061713-8c6d-4b06-b4c9-fcc4bf22bce365535.js"></script>
   <script>
     (function(a,b,c,d,e,f,g){
       e['ire_o'] = c;
